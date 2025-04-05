@@ -142,6 +142,7 @@ class QuestionPresenter: QuestionPresenterProtocol {
             // Reset state for new question
             view?.setNextButtonEnabled(false)
             hasAnsweredCurrentQuestion = false
+            view?.setHelpButtonVisible(false)
             // Fetch next question
             interactor?.fetchData()
         }
