@@ -35,7 +35,6 @@
 			membershipExceptions = (
 				"/Localized: App/LaunchScreen.storyboard",
 				Info.plist,
-				README.md,
 			);
 			target = A630CBC92D9C88920041301A /* AlgebraOne */;
 		};
