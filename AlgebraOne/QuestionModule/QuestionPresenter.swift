@@ -117,7 +117,7 @@ class QuestionPresenter: QuestionPresenterProtocol {
         view?.setNextButtonEnabled(true)
         
         // Show help button only for incorrect answers
-        view?.setHelpButtonVisible(!isCorrect)
+        view?.setHelpButtonVisible(true)
         
         // Update progress indicator
         view?.updateProgressIndicator(at: currentQuestionIndex, isCorrect: isCorrect)
@@ -142,7 +142,6 @@ class QuestionPresenter: QuestionPresenterProtocol {
             // Reset state for new question
             view?.setNextButtonEnabled(false)
             hasAnsweredCurrentQuestion = false
-            view?.setHelpButtonVisible(true)
             // Fetch next question
             interactor?.fetchData()
         }
