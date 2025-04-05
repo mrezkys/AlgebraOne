@@ -71,13 +71,17 @@ class SummaryViewController: UIViewController, SummaryViewProtocol {
             action: #selector(finishSessionTapped)
         )
         
+        view.addSubview(questionsStatesCollectionView)
+        view.addSubview(titleLabel)
+        view.addSubview(subtitleLabel)
+        view.addSubview(illustrationImageView)
+
         setupQuestionStatesCollectionView()
         setupLabels()
         setupImage()
     }
     
     private func setupQuestionStatesCollectionView() {
-        view.addSubview(questionsStatesCollectionView)
         
         questionsStatesCollectionView.delegate = self
         questionsStatesCollectionView.dataSource = self
@@ -100,9 +104,6 @@ class SummaryViewController: UIViewController, SummaryViewProtocol {
     }
     
     private func setupLabels() {
-        view.addSubview(titleLabel)
-        view.addSubview(subtitleLabel)
-
         titleLabel.text = "Loading Answer..."
         titleLabel.numberOfLines = 0
         subtitleLabel.text = presenter?.getEncouragingMessage()
@@ -123,8 +124,7 @@ class SummaryViewController: UIViewController, SummaryViewProtocol {
     }
     
     private func setupImage() {
-        view.addSubview(illustrationImageView)
-
+        
         illustrationImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             illustrationImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -181,7 +181,7 @@ extension SummaryViewController: UICollectionViewDataSource, UICollectionViewDel
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionStateCollectionViewCellIdentifier", for: indexPath) as? QuestionStateCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         if let isCorrect = questionsHistory[safe: indexPath.row]?.isCorrect {
             cell.configure(isTrue: isCorrect)
         }
