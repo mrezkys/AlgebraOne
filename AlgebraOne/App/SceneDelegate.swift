@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        window?.overrideUserInterfaceStyle = .light
+        
         window = UIWindow(windowScene: windowScene)
         
         // Create the welcome module
-        let welcomeModule = WelcomeRouter.createModule()
+        let welcomeModule = OnboardingRouter.createModule()
         
         // Set up the navigation controller
         let navigationController = UINavigationController(rootViewController: welcomeModule)
