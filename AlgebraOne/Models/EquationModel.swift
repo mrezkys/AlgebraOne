@@ -14,8 +14,8 @@ struct EquationModel {
     
     // For generating multiple-choice options
     func generateOptions() -> [Double] {
-        let correctAnswer = self.correctAnswer
-        var options = [correctAnswer]
+        let intCorrectAnswer = Double(Int(correctAnswer))
+        var options = [intCorrectAnswer]
         
         // Generate 3 additional wrong options
         while options.count < 4 {
@@ -23,7 +23,7 @@ struct EquationModel {
             let wrongOption = Double(Int.random(in: -30...30))
             
             // Ensure no duplicates and not equal to correct answer
-            if !options.contains(wrongOption) && abs(wrongOption - correctAnswer) > 0.1 {
+            if !options.contains(wrongOption) && abs(wrongOption - intCorrectAnswer) > 0.1 {
                 options.append(wrongOption)
             }
         }
